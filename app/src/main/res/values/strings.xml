@@ -2,5 +2,8 @@
     <string name="app_name">A fazer</string>
     <string name="dica_nome">Digite seu nome</string>
     <string name="btn_cadastrar">Cadastrar</string>
+    <string name="btn_listar">Listar</string>
+    <string name="dica_endereco">Digite seu endereço</string>
+    <string name="btn_atualizar">Atualizar</string>
 
 </resources>

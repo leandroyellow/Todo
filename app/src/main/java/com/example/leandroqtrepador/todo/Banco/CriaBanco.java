@@ -12,6 +12,7 @@ public class CriaBanco extends SQLiteOpenHelper {
     private static final String TABELA = "tarefa";
     private static final String ID = "_id";
     private static final String NOME = "nome";
+    private static final String ENDERECO = "endereco";
     private static final int VERSAO = 1;
 
     //Construtor da classe que recebe como parametro o contexto
@@ -27,7 +28,8 @@ public class CriaBanco extends SQLiteOpenHelper {
         //Cria uma String com o conteúdo de uma query para criar o banco de dados
         String sql = "CREATE TABLE " + TABELA + " ("
                 + ID + " integer primary key autoincrement, "
-                + NOME + " text"
+                + NOME + " text, "
+                + ENDERECO + " text"
                 + ")";
 
         db.execSQL(sql);

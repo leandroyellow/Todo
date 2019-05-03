@@ -19,7 +19,7 @@ public class ControlaBanco {
     }
 
     //Método do tipo String (deve ser retomado um valor String).
-    public String insereDado (String nome){
+    public String insereDado (String nome, String endereco){
         //Declara o objeto "valores" do tipo "Content/values"
         ContentValues valores;
         //Declara a variável "resultado" do tipo "long"
@@ -33,6 +33,7 @@ public class ControlaBanco {
 
         //put é um método que recebe como parâmetro 2 Strings, a primeira é o nome da coluna do banco de dados, a segunda é o dado que será inserido na linha
         valores.put("nome", nome);
+        valores.put("endereco", endereco);
 
         //insert é um método que recebe como parâmetro 3 valores. primeiro valor é uma String com o nome da tabela, segundo valor é uma String para os campos nulos,
         // terceira valor é um objeto do tipo "ContentValues" com valor a ser inserido
@@ -55,7 +56,7 @@ public class ControlaBanco {
         Cursor cursor;
 
         //um array de string com o nome campos que recebe os valores entre as chaves
-        String [] campos = {"_id", "nome"};
+        String [] campos = {"_id", "nome", "endereco"};
 
         //getReadableDatabase é um método do objeto banco que retorna um valor para o objeto db. esse método diz que o banco esta disponível para a leitura
         db = banco.getReadableDatabase();
@@ -73,4 +74,25 @@ public class ControlaBanco {
         return cursor; //retorno do objeto cursor no método
     }
 
+    public void deletaDado (int id){
+        String where = "_id = " + id;
+        db = banco.getReadableDatabase();
+        db.delete("tarefa", where, null);
+        db.close();
+    }
+
+    public Cursor carregaDadoPorId(int id){
+        Cursor cursor;
+        String[] campos = {"_id", "nome", "endereco"};
+        String where = "_id = " + id;
+        db = banco.getReadableDatabase();
+        cursor = db.query("tarefa", campos, where, null, null,null, null);
+
+        if (cursor!=null){
+            cursor.moveToFirst();
+
+        }
+        db.close();
+        return cursor;
+    }
 }

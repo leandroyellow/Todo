@@ -17,28 +17,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void insere (View view){
-
-        ControlaBanco crud = new ControlaBanco(getBaseContext());
-        EditText edNome = findViewById(R.id.txtNome);
-        TextView tvResultado = findViewById(R.id.tvResultado);
-        String nome = edNome.getText().toString();
-
-        if (nome.equals("") ) {
-
-            tvResultado.setText("digite um nome");
-
-
-        }
-        else{
-
-            String resultado = crud.insereDado(nome);
-            tvResultado.setText(resultado);
-
-            Intent intent = new Intent(this, ListaActivity.class);
-            startActivity(intent);
-
-            edNome.setText("");
-        }
+    public void cadastrar (View view){
+        Intent intent = new Intent(this, CadastrarActivity.class);
+        startActivity(intent);
     }
+
+    public void listar (View view){
+        Intent intent = new Intent(this, ListaActivity.class);
+        startActivity(intent);
+    }
+
+
 }
