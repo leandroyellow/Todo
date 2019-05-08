@@ -42,6 +42,7 @@ public class CadastrarActivity extends AppCompatActivity {
             startActivity(intent);
 
             edNome.setText("");
+            edEndereco.setText("");
         }
     }
 }

@@ -47,10 +47,19 @@ public class ListaActivity extends AppCompatActivity {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Integer codigoId;
+
+                cursor.moveToPosition(position);
+                codigoId = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
+
                 Intent intent = new Intent(ListaActivity.this, AtualizaActivity.class);
+                intent.putExtra("codigoId", codigoId.toString());
                 startActivity(intent);
+                finish();
+                
 
             }
         });
+
     }
 }
